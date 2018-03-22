@@ -2,9 +2,16 @@
 // where your node app starts
 
 // init project
-const express = require('express')
-const app = express()
+const express = require('express');
+const app = express();
 
+var mongoose = require('mongoose');
+var mongoDB = "mongodb://root:root123@ds121299.mlab.com:21299/url_library";
+mongoose.connect(mongoDB);
+mongoose.Promise = global.Promise;
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'mongo connection error: '))
+      
 // we've started you off with Express, 
 // but feel free to use whatever libs or frameworks you'd like through `package.json`.
 
