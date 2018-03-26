@@ -20,19 +20,24 @@
     <link rel="stylesheet" href="/style.css">
   </head>
   <body>
-    <header>
-      <h1>
-        URL Shortener Service 
-      </h1>
-    </header>
-
-    <div class="container">
-      <p class="bold">User Stories</p>
-      <ul>
-        <li>Pass a valid url to get a short-url for the same</li>
-        <li>Pass short-url and redirect to source website</li>
-      </ul>
-      
+        <div class="container">
+            <h1 class="header">
+                URL Shortener Service
+            </h1>
+            <blockquote>
+                User stories:
+                <ol>
+                  <li>Pass a valid URL as a parameter and you get back a short url</li>
+                  <li>Pass a valid short url and you will be redirected to original url</li>
+                </ol>
+                
+            </blockquote>
+            <h3>Example usage:</h3>
+            1) <code>https://fcc-header-ms.glitch.me/url/http://www.google.com/</code><br>
+            2) <code>https://fcc-header-ms.glitch.me/12435</code>
+            <h3>Example output:</h3>
+            1) <code>https://fcc-header-ms.glitch.me/12435</code><br>
+            2) Redirected to http://google.com
     </div>
 
     <!-- Your web-app is https, so your scripts need to be too -->
