@@ -11,7 +11,7 @@ mongoose.connect(mongoDB);
 mongoose.Promise = global.Promise;
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'mongo connection error: '))
-      
+
 // we've started you off with Express, 
 // but feel free to use whatever libs or frameworks you'd like through `package.json`.
 
@@ -22,7 +22,6 @@ app.use(express.static('public'))
 app.get("/", (request, response) => {
   response.sendFile(__dirname + '/views/index.html')
 })
-
 
 // listen for requests :)
 const listener = app.listen(process.env.PORT, () => {
