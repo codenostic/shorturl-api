@@ -1,4 +1,5 @@
 var URL = require('../models/url')
+var {check, validationResult } = require('express-validator/check')
 
 exports.url = function(req, res, next){
   var url = new URL({
