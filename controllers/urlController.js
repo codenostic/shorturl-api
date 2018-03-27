@@ -1,14 +1,32 @@
 var URL = require('../models/url')
-var {check, validationResult } = require('express-validator/check')
+var { query, validationResult } = require('express-validator/check')
 
 exports.url = function(req, res, next){
+  //validation
+  query('query').isURL().withMessage('You did not pass a valid url')
+  //response
+  var errors = validationResult(req);
   var url = new URL({
     url: req.query.query
   })
-  url.save(function(err, url){
-    if(err) {return next(err)}
-    res.send('new url = https://fcc-short-url.glitch.me/'+url.id )
-  })
+  if(errors){
+    res.json({error: errors.array()[0]})
+  }
+  else{
+    URL.find({url: req.query.query})
+      .exec(function(err, found){
+      if(err){return next(err)}
+      if(found){
+        res.json({'short-url': 'https://fcc-short-url.glitch.me/'+found.id})
+      }
+      else{
+          url.save(function(err, url){
+            if(err) {return next(err)}
+            res.send('new url = https://fcc-short-url.glitch.me/'+url.id )
+          })
+      }
+    })
+  }
 }
 
 exports.web = function(req, res, next){
