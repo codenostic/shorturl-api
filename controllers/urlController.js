@@ -6,7 +6,7 @@ exports.url = function(req, res, next){
   })
   url.save(function(err, url){
     if(err) {return next(err)}
-    res.send('new url = http://fcc-short-url.glitch.com/'+url.id )
+    res.send('new url = https://fcc-short-url.glitch.me/'+url.id )
   })
 }
 
