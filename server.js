@@ -4,7 +4,7 @@
 // init project
 const express = require('express');
 const app = express();
-var urlController = require('controllers/urlController');
+var urlController = require('./controllers/urlController');
 
 var mongoose = require('mongoose');
 var mongoDB = "mongodb://root:root123@ds121299.mlab.com:21299/url_library";
