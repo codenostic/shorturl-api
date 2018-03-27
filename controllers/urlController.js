@@ -7,21 +7,21 @@ exports.url = [
   
   //response
   (req, res, next) => {
-      var errors = validationResult(req);
-  var url = new URL({
-    url: req.query.query
-  })
-  if(!errors.isEmpty()){
-    res.json({error: errors.array()[0].msg})
-  }
-  else{
-    URL.findOne({url: req.query.query})
-      .exec(function(err, found){
-      if(err){return next(err)}
-      if(found){
-        res.json({'short-url':'https://fcc-short-url.glitch.me/'+found._id })
-      }
-      else{
+    var errors = validationResult(req);
+    var url = new URL({
+      url: req.query.query
+    })
+    if(!errors.isEmpty()){
+      res.json({error: errors.array()[0].msg})
+    }
+    else{
+      URL.findOne({url: req.query.query})
+        .exec(function(err, found){
+        if(err){return next(err)}
+        if(found){
+          res.json({'short-url':'https://fcc-short-url.glitch.me/'+found._id })
+        }
+        else{
           url.save(function(err, url){
             if(err) {return next(err)}
             res.json({'new-short-url':"https://fcc-short-url.glitch.me/"+url.id, errors: errors} )
