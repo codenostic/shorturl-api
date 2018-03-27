@@ -4,6 +4,8 @@ var { query, validationResult } = require('express-validator/check')
 exports.url = [
   //validation
   query('query').isURL().withMessage('You did not pass a valid url'),
+  
+  //response
   (req, res, next) => {
       var errors = validationResult(req);
   var url = new URL({
