@@ -50,7 +50,7 @@ var getRandomPath = function(){
   var result = "";
   var i = 0;
   while(1 < 5){
-    
-  
-  
+    result += alphaNum[Math.floor(Math.random()*alphaNum.length)]
+  }
+  return result;
 }
