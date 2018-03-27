@@ -8,8 +8,10 @@ exports.url = [
   //response
   (req, res, next) => {
     var errors = validationResult(req);
+    var randPath = getRandomPath();
     var url = new URL({
-      url: req.query.query
+      url: req.query.query,
+      path: randPath
     })
     if(!errors.isEmpty()){
       res.json({error: errors.array()[0].msg})
@@ -41,4 +43,14 @@ exports.web = function(req, res, next){
       return next(err)}
     res.redirect(url.url)
   })
+}
+
+var getRandomPath = function(){
+  const alphaNum = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+  var result = "";
+  var i = 0;
+  while(1 < 5){
+    
+  
+  
 }
