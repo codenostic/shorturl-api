@@ -9,15 +9,15 @@ exports.url = function(req, res, next){
   var url = new URL({
     url: req.query.query
   })
-  if(errors){
-    res.json({error: errors.array()[0]})
+  if(!errors.isEmpty()){
+    res.json({error: 'has error'})
   }
   else{
     URL.find({url: req.query.query})
       .exec(function(err, found){
       if(err){return next(err)}
       if(found){
-        res.json({'short-url': 'https://fcc-short-url.glitch.me/'+found.id})
+        res.json(found)
       }
       else{
           url.save(function(err, url){
