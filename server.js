@@ -24,7 +24,7 @@ app.get("/", (request, response) => {
   response.sendFile(__dirname + '/views/index.html')
 })
 
-app.get("/url/:url", urlController.url);
+app.get("/url", urlController.url);
 
 app.get("/:id", urlController.web);
 
