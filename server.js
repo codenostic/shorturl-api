@@ -4,6 +4,7 @@
 // init project
 const express = require('express');
 const app = express();
+var urlController = require('controllers/urlController');
 
 var mongoose = require('mongoose');
 var mongoDB = "mongodb://root:root123@ds121299.mlab.com:21299/url_library";
@@ -22,6 +23,10 @@ app.use(express.static('public'))
 app.get("/", (request, response) => {
   response.sendFile(__dirname + '/views/index.html')
 })
+
+app.get("/url/:url", urlController.url);
+
+app.get("/:id", urlController.web);
 
 // listen for requests :)
 const listener = app.listen(process.env.PORT, () => {
