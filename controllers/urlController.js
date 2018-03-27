@@ -10,9 +10,12 @@ exports.url = function(req, res, next){
   })
 }
 
-exports.web = function(req, res){
+exports.web = function(req, res, next){
   URL.findById(req.params.id)
     .exec(function(err, url){
+    if(err){
+      res.status(404).send('Requested url not found. Please check the passed parameter')
+      return next(err)}
     res.redirect(url.url)
   })
 }
