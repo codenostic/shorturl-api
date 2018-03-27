@@ -13,16 +13,16 @@ exports.url = function(req, res, next){
     res.json({error: 'has error'})
   }
   else{
-    URL.find({url: req.query.query})
+    URL.findOne({url: req.query.query})
       .exec(function(err, found){
       if(err){return next(err)}
       if(found){
-        res.json(found)
+        res.json({'short-url':'https://fcc-short-url.glitch.me/'+found._id })
       }
       else{
           url.save(function(err, url){
             if(err) {return next(err)}
-            res.send('new url = https://fcc-short-url.glitch.me/'+url.id )
+            res.send('short url = https://fcc-short-url.glitch.me/'+url.id )
           })
       }
     })
