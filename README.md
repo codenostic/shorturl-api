@@ -1,5 +1,6 @@
 FreeCodeCamp URL Shortener Service
 ==================================
+Note: to see application in action - click "LIVE" button on top.
 
 Objective 
 1) Given a valid URL as parameter will give a short url 
