@@ -1,11 +1,9 @@
-// server.js
-// where your node app starts
-
-// init project
+// App starts here
 const express = require('express');
 const app = express();
 var urlController = require('./controllers/urlController');
 
+//connection to database
 var mongoose = require('mongoose');
 var mongoDB = "mongodb://root:root123@ds121299.mlab.com:21299/url_library";
 mongoose.connect(mongoDB);
@@ -13,13 +11,7 @@ mongoose.Promise = global.Promise;
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'mongo connection error: '))
 
-// we've started you off with Express, 
-// but feel free to use whatever libs or frameworks you'd like through `package.json`.
-
-// http://expressjs.com/en/starter/static-files.html
-// app.use(express.static('public'))
-
-// http://expressjs.com/en/starter/basic-routing.html
+//routes
 app.get("/", (request, response) => {
   response.sendFile(__dirname + '/views/index.html')
 })
