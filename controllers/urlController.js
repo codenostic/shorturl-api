@@ -34,7 +34,6 @@ exports.url = [
   }
 ]
 
-
 exports.web = function(req, res, next){
   URL.findOne({path:req.params.id})
     .exec(function(err, url){
